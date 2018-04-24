@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
@@ -23,7 +22,7 @@ class MessageDataAssertionTest extends TestCase
     /**
      * @test
      */
-    public function it_asserts_message_data_returned_by_the_no_op_message_converter(): void
+    public function it_asserts_message_data_returned_by_the_no_op_message_converter()
     {
         $testAssertions = new DoSomething(['test' => 'assertions', ['null' => null]]);
 

@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -22,7 +21,7 @@ final class MessageDataAssertion
      *
      * @return void
      */
-    public static function assert($messageData): void
+    public static function assert($messageData)
     {
         Assertion::isArray($messageData, 'MessageData must be an array');
         Assertion::keyExists($messageData, 'message_name', 'MessageData must contain a key message_name');
@@ -38,17 +37,17 @@ final class MessageDataAssertion
         self::assertCreatedAt($messageData['created_at']);
     }
 
-    public static function assertUuid($uuid): void
+    public static function assertUuid($uuid)
     {
         Assertion::uuid($uuid, 'uuid must be a valid UUID string');
     }
 
-    public static function assertMessageName($messageName): void
+    public static function assertMessageName($messageName)
     {
         Assertion::minLength($messageName, 3, 'message_name must be string with at least 3 chars length');
     }
 
-    public static function assertPayload($payload): void
+    public static function assertPayload($payload)
     {
         Assertion::isArray($payload, 'payload must be an array');
         self::assertSubPayload($payload);
@@ -57,7 +56,7 @@ final class MessageDataAssertion
     /**
      * @param mixed $payload
      */
-    private static function assertSubPayload($payload): void
+    private static function assertSubPayload($payload)
     {
         if (is_array($payload)) {
             foreach ($payload as $subPayload) {
@@ -70,7 +69,7 @@ final class MessageDataAssertion
         Assertion::nullOrscalar($payload, 'payload must only contain arrays and scalar values');
     }
 
-    public static function assertMetadata($metadata): void
+    public static function assertMetadata($metadata)
     {
         Assertion::isArray($metadata, 'metadata must be an array');
 
@@ -80,7 +79,7 @@ final class MessageDataAssertion
         }
     }
 
-    public static function assertCreatedAt($createdAt): void
+    public static function assertCreatedAt($createdAt)
     {
         Assertion::isInstanceOf($createdAt, DateTimeImmutable::class, sprintf(
             'created_at must be of type %s. Got %s',

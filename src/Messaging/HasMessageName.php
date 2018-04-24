@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -17,5 +16,5 @@ namespace Prooph\Common\Messaging;
  */
 interface HasMessageName
 {
-    public function messageName(): string;
+    public function messageName();
 }

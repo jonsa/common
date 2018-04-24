@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
@@ -23,7 +22,7 @@ class NoOpMessageConverterTest extends TestCase
     /**
      * @test
      */
-    public function it_converts_to_array(): void
+    public function it_converts_to_array()
     {
         $messageMock = $this->getMockForAbstractClass(DomainMessage::class, [], '', true, true, true, ['toArray']);
         $messageMock->expects($this->once())->method('toArray');
@@ -35,7 +34,7 @@ class NoOpMessageConverterTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_exception_when_message_is_not_a_domain_message(): void
+    public function it_throws_exception_when_message_is_not_a_domain_message()
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('was expected to be instanceof of "Prooph\Common\Messaging\DomainMessage" but is not');

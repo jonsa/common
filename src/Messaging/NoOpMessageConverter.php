@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -22,7 +21,7 @@ use Assert\Assertion;
  */
 final class NoOpMessageConverter implements MessageConverter
 {
-    public function convertToArray(Message $domainMessage): array
+    public function convertToArray(Message $domainMessage)
     {
         Assertion::isInstanceOf($domainMessage, DomainMessage::class);
 

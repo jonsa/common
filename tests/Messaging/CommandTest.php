@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
@@ -53,7 +52,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_has_a_name(): void
+    public function it_has_a_name()
     {
         $this->assertEquals('TestCommand', $this->command->messageName());
     }
@@ -61,7 +60,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_has_a_uuid(): void
+    public function it_has_a_uuid()
     {
         $this->assertTrue($this->uuid->equals($this->command->uuid()));
     }
@@ -69,7 +68,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_has_created_at_information(): void
+    public function it_has_created_at_information()
     {
         $this->assertEquals($this->createdAt->format(\DateTime::ISO8601), $this->command->createdAt()->format(\DateTime::ISO8601));
     }
@@ -77,7 +76,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_has_payload(): void
+    public function it_has_payload()
     {
         $this->assertEquals(['command' => 'payload'], $this->command->payload());
     }
@@ -85,7 +84,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_has_metadata(): void
+    public function it_has_metadata()
     {
         $this->assertEquals(['command' => 'metadata'], $this->command->metadata());
     }
@@ -93,7 +92,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_can_be_converted_to_array_and_back(): void
+    public function it_can_be_converted_to_array_and_back()
     {
         $commandData = $this->command->toArray();
 
@@ -105,7 +104,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_new_instance_with_replaced_metadata(): void
+    public function it_returns_new_instance_with_replaced_metadata()
     {
         $newCommand = $this->command->withMetadata(['other' => 'metadata']);
 
@@ -117,7 +116,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_new_instance_with_added_metadata(): void
+    public function it_returns_new_instance_with_added_metadata()
     {
         $newCommand = $this->command->withAddedMetadata('other', 'metadata');
 
@@ -129,7 +128,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_is_initialized_with_defaults(): void
+    public function it_is_initialized_with_defaults()
     {
         $command = new DoSomething(['command' => 'payload']);
 
@@ -143,7 +142,7 @@ class CommandTest extends TestCase
     /**
      * @test
      */
-    public function it_is_of_type_command(): void
+    public function it_is_of_type_command()
     {
         $this->assertEquals(DomainMessage::TYPE_COMMAND, $this->command->messageType());
     }

@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
@@ -18,7 +17,7 @@ namespace Prooph\Common\Event;
  */
 interface ActionEvent
 {
-    public function getName(): string;
+    public function getName();
 
     /**
      * Get target/context from which event was triggered
@@ -42,9 +41,9 @@ interface ActionEvent
      *
      * @return mixed
      */
-    public function getParam(string $name, $default = null);
+    public function getParam($name, $default = null);
 
-    public function setName(string $name): void;
+    public function setName($name);
 
     /**
      * Set the event target/context
@@ -53,7 +52,7 @@ interface ActionEvent
      *
      * @return void
      */
-    public function setTarget($target): void;
+    public function setTarget($target);
 
     /**
      * Set event parameters
@@ -62,7 +61,7 @@ interface ActionEvent
      *
      * @return void
      */
-    public function setParams($params): void;
+    public function setParams($params);
 
     /**
      * Set a single parameter by key
@@ -72,7 +71,7 @@ interface ActionEvent
      *
      * @return void
      */
-    public function setParam(string $name, $value): void;
+    public function setParam($name, $value);
 
     /**
      * Indicate whether or not the parent ActionEventEmitter should stop propagating events
@@ -81,10 +80,10 @@ interface ActionEvent
      *
      * @return void
      */
-    public function stopPropagation(bool $flag = true): void;
+    public function stopPropagation($flag = true);
 
     /**
      * Has this event indicated event propagation should stop?
      */
-    public function propagationIsStopped(): bool;
+    public function propagationIsStopped();
 }

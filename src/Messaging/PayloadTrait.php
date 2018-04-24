@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -30,12 +29,12 @@ trait PayloadTrait
         $this->setPayload($payload);
     }
 
-    public function payload(): array
+    public function payload()
     {
         return $this->payload;
     }
 
-    protected function setPayload(array $payload): void
+    protected function setPayload(array $payload)
     {
         $this->payload = $payload;
     }
@@ -43,5 +42,5 @@ trait PayloadTrait
     /**
      * Use this method to initialize message with defaults or extend your class from DomainMessage
      */
-    abstract protected function init(): void;
+    abstract protected function init();
 }

@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
@@ -52,7 +51,7 @@ class DomainEventTest extends TestCase
     /**
      * @test
      */
-    public function it_has_a_name(): void
+    public function it_has_a_name()
     {
         $this->assertEquals('TestDomainEvent', $this->domainEvent->messageName());
     }
@@ -60,7 +59,7 @@ class DomainEventTest extends TestCase
     /**
      * @test
      */
-    public function it_has_a_uuid(): void
+    public function it_has_a_uuid()
     {
         $this->assertTrue($this->uuid->equals($this->domainEvent->uuid()));
     }
@@ -68,7 +67,7 @@ class DomainEventTest extends TestCase
     /**
      * @test
      */
-    public function it_has_created_at_information(): void
+    public function it_has_created_at_information()
     {
         $this->assertEquals($this->createdAt->format(\DateTime::ISO8601), $this->domainEvent->createdAt()->format(\DateTime::ISO8601));
     }
@@ -76,7 +75,7 @@ class DomainEventTest extends TestCase
     /**
      * @test
      */
-    public function it_has_payload(): void
+    public function it_has_payload()
     {
         $this->assertEquals(['event' => 'payload'], $this->domainEvent->payload());
     }
@@ -84,7 +83,7 @@ class DomainEventTest extends TestCase
     /**
      * @test
      */
-    public function it_has_metadata(): void
+    public function it_has_metadata()
     {
         $this->assertEquals(['event' => 'metadata'], $this->domainEvent->metadata());
     }
@@ -92,7 +91,7 @@ class DomainEventTest extends TestCase
     /**
      * @test
      */
-    public function it_can_be_converted_to_array_and_back(): void
+    public function it_can_be_converted_to_array_and_back()
     {
         $commandData = $this->domainEvent->toArray();
 
@@ -104,7 +103,7 @@ class DomainEventTest extends TestCase
     /**
      * @test
      */
-    public function it_is_of_type_event(): void
+    public function it_is_of_type_event()
     {
         $this->assertEquals(DomainMessage::TYPE_EVENT, $this->domainEvent->messageType());
     }

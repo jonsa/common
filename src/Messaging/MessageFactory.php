@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -31,5 +30,5 @@ interface MessageFactory
      * metadata = []
      * created_at = new \DateTimeImmutable('now', new \DateTimeZone('UTC')) //We treat all dates as UTC
      */
-    public function createMessageFromArray(string $messageName, array $messageData): Message;
+    public function createMessageFromArray($messageName, array $messageData);
 }

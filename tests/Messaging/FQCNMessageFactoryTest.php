@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
@@ -33,7 +32,7 @@ class FQCNMessageFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_a_new_message_from_array_and_fqcn(): void
+    public function it_creates_a_new_message_from_array_and_fqcn()
     {
         $uuid = Uuid::uuid4();
         $createdAt = new \DateTimeImmutable();
@@ -55,7 +54,7 @@ class FQCNMessageFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_a_new_message_with_defaults_from_array_and_fqcn(): void
+    public function it_creates_a_new_message_with_defaults_from_array_and_fqcn()
     {
         $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
             'payload' => ['command' => 'payload'],
@@ -69,7 +68,7 @@ class FQCNMessageFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_exception_when_message_class_cannot_be_found(): void
+    public function it_throws_exception_when_message_class_cannot_be_found()
     {
         $this->expectException(\UnexpectedValueException::class);
 
@@ -79,7 +78,7 @@ class FQCNMessageFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message(): void
+    public function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message()
     {
         $this->expectException(\UnexpectedValueException::class);
 

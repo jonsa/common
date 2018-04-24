@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -43,9 +42,9 @@ abstract class DomainMessage implements Message
      */
     protected $metadata = [];
 
-    abstract protected function setPayload(array $payload): void;
+    abstract protected function setPayload(array $payload);
 
-    public static function fromArray(array $messageData): DomainMessage
+    public static function fromArray(array $messageData)
     {
         MessageDataAssertion::assert($messageData);
 
@@ -63,7 +62,7 @@ abstract class DomainMessage implements Message
         return $message;
     }
 
-    protected function init(): void
+    protected function init()
     {
         if ($this->uuid === null) {
             $this->uuid = Uuid::uuid4();
@@ -78,22 +77,22 @@ abstract class DomainMessage implements Message
         }
     }
 
-    public function uuid(): UuidInterface
+    public function uuid()
     {
         return $this->uuid;
     }
 
-    public function createdAt(): DateTimeImmutable
+    public function createdAt()
     {
         return $this->createdAt;
     }
 
-    public function metadata(): array
+    public function metadata()
     {
         return $this->metadata;
     }
 
-    public function toArray(): array
+    public function toArray()
     {
         return [
             'message_name' => $this->messageName,
@@ -104,12 +103,12 @@ abstract class DomainMessage implements Message
         ];
     }
 
-    public function messageName(): string
+    public function messageName()
     {
         return $this->messageName;
     }
 
-    public function withMetadata(array $metadata): Message
+    public function withMetadata(array $metadata)
     {
         $message = clone $this;
 
@@ -123,7 +122,7 @@ abstract class DomainMessage implements Message
      *
      * Given value must have a scalar type.
      */
-    public function withAddedMetadata(string $key, $value): Message
+    public function withAddedMetadata($key, $value)
     {
         Assertion::notEmpty($key, 'Invalid key');
 

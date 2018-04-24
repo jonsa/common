@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -31,5 +30,5 @@ interface MessageConverter
      * The correct structure and types are asserted by MessageDataAssertion::assert()
      * so make sure that the returned array of your custom conversion logic passes the assertion.
      */
-    public function convertToArray(Message $domainMessage): array;
+    public function convertToArray(Message $domainMessage);
 }

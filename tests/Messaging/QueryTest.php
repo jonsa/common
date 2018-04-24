@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
@@ -22,7 +21,7 @@ class QueryTest extends TestCase
     /**
      * @test
      */
-    public function it_has_the_message_type_query(): void
+    public function it_has_the_message_type_query()
     {
         $query = AskSomething::fromArray([
             'message_name' => 'TestQuery',

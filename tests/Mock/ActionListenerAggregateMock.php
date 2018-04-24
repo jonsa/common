@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Mock;
 
@@ -24,16 +23,18 @@ final class ActionListenerAggregateMock implements ActionEventListenerAggregate
     /**
      * @param ActionEventEmitter $dispatcher
      */
-    public function attach(ActionEventEmitter $dispatcher): void
+    public function attach(ActionEventEmitter $dispatcher)
     {
-        $callable = \Closure::fromCallable([$this, 'onTest']);
+        $callable = function (ActionEvent $event) {
+            return $this->onTest($event);
+        };
         $this->trackHandler($dispatcher->attachListener('test', $callable, 100));
     }
 
     /**
      * @param ActionEvent $event
      */
-    private function onTest(ActionEvent $event): void
+    private function onTest(ActionEvent $event)
     {
         $event->stopPropagation(true);
     }

@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -18,7 +17,7 @@ use Ramsey\Uuid\Uuid;
 
 class FQCNMessageFactory implements MessageFactory
 {
-    public function createMessageFromArray(string $messageName, array $messageData): Message
+    public function createMessageFromArray($messageName, array $messageData)
     {
         if (! class_exists($messageName)) {
             throw new \UnexpectedValueException('Given message name is not a valid class: ' . (string) $messageName);

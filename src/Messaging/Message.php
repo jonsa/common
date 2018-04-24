@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -17,29 +16,29 @@ use Ramsey\Uuid\UuidInterface;
 
 interface Message extends HasMessageName
 {
-    public const TYPE_COMMAND = 'command';
-    public const TYPE_EVENT = 'event';
-    public const TYPE_QUERY = 'query';
+    const TYPE_COMMAND = 'command';
+    const TYPE_EVENT = 'event';
+    const TYPE_QUERY = 'query';
 
     /**
      * Should be one of Message::TYPE_COMMAND, Message::TYPE_EVENT or Message::TYPE_QUERY
      */
-    public function messageType(): string;
+    public function messageType();
 
-    public function uuid(): UuidInterface;
+    public function uuid();
 
-    public function createdAt(): DateTimeImmutable;
+    public function createdAt();
 
-    public function payload(): array;
+    public function payload();
 
-    public function metadata(): array;
+    public function metadata();
 
-    public function withMetadata(array $metadata): Message;
+    public function withMetadata(array $metadata);
 
     /**
      * Returns new instance of message with $key => $value added to metadata
      *
      * Given value must have a scalar or array type.
      */
-    public function withAddedMetadata(string $key, $value): Message;
+    public function withAddedMetadata($key, $value);
 }

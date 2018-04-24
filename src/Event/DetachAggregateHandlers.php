@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
@@ -23,12 +22,12 @@ trait DetachAggregateHandlers
      */
     private $handlerCollection = [];
 
-    protected function trackHandler(ListenerHandler $handler): void
+    protected function trackHandler(ListenerHandler $handler)
     {
         $this->handlerCollection[] = $handler;
     }
 
-    public function detach(ActionEventEmitter $dispatcher): void
+    public function detach(ActionEventEmitter $dispatcher)
     {
         foreach ($this->handlerCollection as $handler) {
             $dispatcher->detachListener($handler);

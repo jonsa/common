@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Mock;
 
@@ -24,7 +23,7 @@ final class ActionEventListenerMock
     /**
      * @param ActionEvent $event
      */
-    public function __invoke(ActionEvent $event): void
+    public function __invoke(ActionEvent $event)
     {
         $this->lastEvent = $event;
     }

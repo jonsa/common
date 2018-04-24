@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -17,7 +16,7 @@ namespace Prooph\Common\Messaging;
  */
 abstract class Query extends DomainMessage
 {
-    public function messageType(): string
+    public function messageType()
     {
         return self::TYPE_QUERY;
     }

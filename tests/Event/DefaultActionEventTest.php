@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace ProophTest\Common\Event;
 
@@ -28,7 +27,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_can_be_initialized_with_a_name_a_target_and_params(): void
+    public function it_can_be_initialized_with_a_name_a_target_and_params()
     {
         $event = $this->getTestEvent();
 
@@ -40,7 +39,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_can_initialized_without_a_target_and_params(): void
+    public function it_can_initialized_without_a_target_and_params()
     {
         $event = new DefaultActionEvent('test-event');
 
@@ -51,7 +50,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_param_if_set(): void
+    public function it_returns_param_if_set()
     {
         $event = $this->getTestEvent();
         $this->assertEquals('foo', $event->getParam('param1'));
@@ -62,7 +61,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_null_if_param_is_not_set_and_no_other_default_is_given(): void
+    public function it_returns_null_if_param_is_not_set_and_no_other_default_is_given()
     {
         $this->assertNull($this->getTestEvent()->getParam('unknown'));
     }
@@ -70,7 +69,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_default_if_param_is_not_set(): void
+    public function it_returns_default_if_param_is_not_set()
     {
         $this->assertEquals('default', $this->getTestEvent()->getParam('unknown', 'default'));
     }
@@ -78,7 +77,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_changes_name_when_new_one_is_set(): void
+    public function it_changes_name_when_new_one_is_set()
     {
         $event = $this->getTestEvent();
 
@@ -90,7 +89,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_overrides_params_array_if_new_one_is_set(): void
+    public function it_overrides_params_array_if_new_one_is_set()
     {
         $event = $this->getTestEvent();
 
@@ -102,7 +101,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_allows_object_implementing_array_access_as_params(): void
+    public function it_allows_object_implementing_array_access_as_params()
     {
         $arrayLikeObject = new \ArrayObject(['object_param' => 'baz']);
 
@@ -116,7 +115,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_does_not_allow_params_object_that_is_not_of_type_array_access(): void
+    public function it_does_not_allow_params_object_that_is_not_of_type_array_access()
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -130,7 +129,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_changes_target_if_new_is_set(): void
+    public function it_changes_target_if_new_is_set()
     {
         $event = $this->getTestEvent();
 
@@ -144,7 +143,7 @@ class DefaultActionEventTest extends TestCase
     /**
      * @test
      */
-    public function it_indicates_that_propagation_should_be_stopped(): void
+    public function it_indicates_that_propagation_should_be_stopped()
     {
         $event = $this->getTestEvent();
 

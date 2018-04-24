@@ -49,7 +49,7 @@ final class RegisterUser extends \Prooph\Common\Messaging\Command
         $this->init();
     }
 
-    public function payload(): array
+    public function payload()
     {
         return [
             'user_id' => $this->userId->toString(),
@@ -58,7 +58,7 @@ final class RegisterUser extends \Prooph\Common\Messaging\Command
     }
 
 
-    protected function setPayload(array $payload): void
+    protected function setPayload(array $payload)
     {
         //we skip assertions here for the sake of simplicity
         $this->userId = UserId::fromString((string)$payload['user_id']);

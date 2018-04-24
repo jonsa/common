@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
@@ -41,7 +40,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      *
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
-    public function getNewActionEvent(string $name = null, $target = null, $params = null): ActionEvent
+    public function getNewActionEvent($name = null, $target = null, $params = null)
     {
         if ($name === null) {
             $name = 'action_event';
@@ -50,7 +49,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
         return new DefaultActionEvent($name, $target, $params);
     }
 
-    public function dispatch(ActionEvent $event): void
+    public function dispatch(ActionEvent $event)
     {
         foreach ($this->getListeners($event) as $listenerHandler) {
             $listener = $listenerHandler->getActionEventListener();
@@ -66,7 +65,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      *
      * The callback is invoked after each listener and gets the action event as only argument
      */
-    public function dispatchUntil(ActionEvent $event, callable $callback): void
+    public function dispatchUntil(ActionEvent $event, callable $callback)
     {
         foreach ($this->getListeners($event) as $listenerHandler) {
             $listener = $listenerHandler->getActionEventListener();
@@ -86,7 +85,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      *
      * @throws \InvalidArgumentException
      */
-    public function attachListener(string $event, callable $listener, int $priority = 1): ListenerHandler
+    public function attachListener($event, callable $listener, $priority = 1)
     {
         if (! empty($this->availableEventNames) && ! in_array($event, $this->availableEventNames, true)) {
             throw new \InvalidArgumentException("Unknown event name given: $event");
@@ -99,7 +98,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
         return $handler;
     }
 
-    public function detachListener(ListenerHandler $listenerHandler): bool
+    public function detachListener(ListenerHandler $listenerHandler)
     {
         foreach ($this->events as &$prioritizedListeners) {
             foreach ($prioritizedListeners as &$listenerHandlers) {
@@ -116,12 +115,12 @@ class ProophActionEventEmitter implements ActionEventEmitter
         return false;
     }
 
-    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate): void
+    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate)
     {
         $aggregate->attach($this);
     }
 
-    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate): void
+    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate)
     {
         $aggregate->detach($this);
     }
@@ -131,9 +130,9 @@ class ProophActionEventEmitter implements ActionEventEmitter
      *
      * @return ListenerHandler[]
      */
-    private function getListeners(ActionEvent $event): iterable
+    private function getListeners(ActionEvent $event)
     {
-        $prioritizedListeners = $this->events[$event->getName()] ?? [];
+        $prioritizedListeners = isset($this->events[$event->getName()]) ? $this->events[$event->getName()] : [];
 
         krsort($prioritizedListeners, SORT_NUMERIC);
 

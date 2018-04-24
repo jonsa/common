@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
@@ -17,7 +16,7 @@ namespace Prooph\Common\Event;
  */
 interface ActionEventListenerAggregate
 {
-    public function attach(ActionEventEmitter $dispatcher): void;
+    public function attach(ActionEventEmitter $dispatcher);
 
-    public function detach(ActionEventEmitter $dispatcher): void;
+    public function detach(ActionEventEmitter $dispatcher);
 }
